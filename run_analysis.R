@@ -64,7 +64,6 @@ main_script <- function(){
   readable_names <- sub('\\(\\)',' ', readable_names)
   readable_names <- sub('\\-','', readable_names)
   names(extracted_data) <- tolower(readable_names)
-  first_data_set <- extracted_data
   
   ##5_creating an independent tidy data set with the average of each variable
   result <- extracted_data %>% 
@@ -72,5 +71,4 @@ main_script <- function(){
             summarize_each(list(mean))
   result$subject <- as.numeric(result$subject)
   result <- arrange(result, subject)
-  second_data_set <- result
 }
